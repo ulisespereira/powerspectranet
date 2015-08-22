@@ -75,7 +75,7 @@ class morrislecar:
 		return 1-(self.m1(u)*self.bet1(u)*self.tau(u))/(w*w*self.tau(u)*self.tau(u)+1)
 
 	def z(self,u,w):
-		return 1/np.sqrt(w*w*self.b(u,w)*self.b(u,w)+(w*w*self.a(u,w)-self.Df(u))**2)
+		return 1/(w*w*self.b(u,w)*self.b(u,w)+(w*w*self.a(u,w)-self.Df(u))**2)
 		
 		# setting up the stimulation function
 	def thestim(self,elstim):

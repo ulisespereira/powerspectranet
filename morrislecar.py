@@ -21,7 +21,7 @@ class morrislecar:
 		self.el=-60.
 		self.gca=4.
 		self.gk=8.
-		self.gl=2.
+		self.gl=1.
 		self.cm=20.
 		#nondimensionalization
 		self.eadim=-self.el
@@ -72,7 +72,7 @@ class morrislecar:
 		return (self.m1(u)*self.bet1(u)*self.tau(u)*self.tau(u))/(w*w*self.tau(u)*self.tau(u)+1)
 
 	def b(self,u,w):
-		return 1-(self.m1(u)*self.bet1(u)*self.tau(u))/(w*w*self.tau(u)*self.tau(u)+1)
+		return 1+(self.m1(u)*self.bet1(u)*self.tau(u))/(w*w*self.tau(u)*self.tau(u)+1)
 
 	def z(self,u,w):
 		return 1/(w*w*self.b(u,w)*self.b(u,w)+(w*w*self.a(u,w)-self.Df(u))**2)

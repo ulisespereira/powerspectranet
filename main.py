@@ -38,9 +38,6 @@ I0=0. #dc
 period=3000
 freq=0.4
 delta_freq=0.01
-n_sim=1
-
-
 
 
 N=nstart+period/dt
@@ -66,14 +63,14 @@ for I in 0.05*np.arange(5):
 	theo_curve=np.array([myneuron.z(mean_v,2*np.pi*f) for f in thefreq])
 
 	spectra.plot(f_v,P_v/P_I,'o')
-	spectra.plot(thefreq,theo_curve,'b')
+	spectra.plot(thefreq,theo_curve,'b',lw=2)
 	print(I)
 zap.set_xlabel('ms')
 zap.set_ylabel('mV')
 spectra.set_xlabel('Normalized Freq')
 spectra.set_ylabel('Normalized Impedance')
 spectra.set_xlim([0.01,0.4])	
-spectra.set_ylim([0.1,2])	
+spectra.set_ylim([0.1,1.8])	
 plt.show()
 
 

@@ -21,7 +21,7 @@ class morrislecar:
 		self.el=-60.
 		self.gca=4.
 		self.gk=8.
-		self.gl=1.
+		self.gl=2.
 		self.cm=20.
 		#nondimensionalization
 		self.eadim=-self.el

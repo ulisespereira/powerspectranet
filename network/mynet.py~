@@ -23,6 +23,7 @@ class net:
 		field=np.array([self.myneuron.field(x,t) for x in X])
 	#	print(field)
 		field[0,0]=field[0,0]+self.f(t) #stimulation
+		print(field[0,0])
 		field[:,0]=field[:,0]+np.dot(self.connectivity,X[:,0])
 	#	print(field)
 		return field

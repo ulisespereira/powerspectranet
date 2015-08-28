@@ -39,7 +39,7 @@ class morrislecar:
 		self.a2=self.eadim/self.V2
 		self.b2=-self.V1/self.V2
 		self.c=(1/(self.phi*self.lam))
-
+		self.connections=0
 		self.f=lambda x: 0.                # stimuli funct
 
 		#functions
@@ -60,7 +60,7 @@ class morrislecar:
 		return 0.5*self.a1*np.cosh(self.b1+self.a1*u)**(-2)
 
 	def Df(self,u):
-		return self.g1*self.ninf(u)+self.g2*self.minf(u)+self.g3+self.g1*self.Dninf(u)*(u-self.u1)+self.g2*self.Dminf(u)*(u-self.u2)
+		return self.g1*self.ninf(u)+self.g2*self.minf(u)+self.g3+self.g1*self.Dninf(u)*(u-self.u1)+self.g2*self.Dminf(u)*(u-self.u2)+self.connections
 
 	def bet1(self,u):
 		return -self.Dninf(u)

@@ -9,8 +9,8 @@ and there is stimulation to just one neuron.
 class net:
 	def __init__(self,K):
 		self.K=K
-		self.f=0.2*np.ones(self.K)
-		self.g=0.2*np.ones(self.K)
+		self.f=(1.5/K)*np.ones(self.K)
+		self.g=(1.5/K)*np.ones(self.K)
 		self.connectivity=np.outer(self.f,self.g)
 		self.myneuron=morrislecar()
 		self.f=lambda x: 0.

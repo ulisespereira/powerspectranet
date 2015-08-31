@@ -5,7 +5,7 @@ from scipy.integrate import odeint
 import numpy as np
 import matplotlib.pyplot as plt
 
-K=10
+K=4
 X0=-1*np.ones((K,2))
 dt=0.1
 fs=1/dt
@@ -49,13 +49,17 @@ figure=plt.figure()
 zap=figure.add_subplot(121)
 spectra=figure.add_subplot(122)
 
+
 for i in range(0,K):
 	zap.plot(sol[:,i])
 for i in range(0,K):
-	spectra.plot(f_v,power_spectras[i])
+	print i
+	spectra.plot(f_v,power_spectras[i],'o')
+	spectra.plot(f_v,mynet.z2(mean_voltages,2*np.pi*f_v)[i])
+#spectra.plot(f_v,mynet.z2(mean_voltages,2*np.pi*f_v)[0])
 
 spectra.set_xlabel('Normalized Freq')
 spectra.set_ylabel('Normalized Impedance')
 spectra.set_xlim([0.01,0.4])	
-spectra.set_ylim([0.1,1.8])	
+spectra.set_ylim([0,6])	
 plt.show()

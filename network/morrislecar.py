@@ -42,8 +42,9 @@ class morrislecar:
 
 		self.f=lambda x: 0.                # stimuli funct
 
-		#functions
-
+		self.synapses=0.
+		
+	#functions
 	def minf(self,u):
 		return 0.5*(1.+np.tanh(self.a2*u+self.b2))
 
@@ -60,7 +61,7 @@ class morrislecar:
 		return 0.5*self.a1*np.cosh(self.b1+self.a1*u)**(-2)
 
 	def Df(self,u):
-		return self.g1*self.ninf(u)+self.g2*self.minf(u)+self.g3+self.g1*self.Dninf(u)*(u-self.u1)+self.g2*self.Dminf(u)*(u-self.u2)
+		return self.g1*self.ninf(u)+self.g2*self.minf(u)+self.g3+self.g1*self.Dninf(u)*(u-self.u1)+self.g2*self.Dminf(u)*(u-self.u2)-self.synapses
 
 	def bet1(self,u):
 		return -self.Dninf(u)
@@ -74,9 +75,21 @@ class morrislecar:
 	def b(self,u,w):
 		return 1+(self.m1(u)*self.bet1(u)*self.tau(u))/(w*w*self.tau(u)*self.tau(u)+1)
 
-	def z(self,u,w):
+	def z2(self,u,w):# impedance squared
 		return 1/(w*w*self.b(u,w)*self.b(u,w)+(w*w*self.a(u,w)-self.Df(u))**2)
-		
+	
+	def zim(self,u,w):
+		return -self.z2(u,w)*w*self.b(u,w)
+
+	def zre(self,u,w):
+		return -self.z2(u,w)*(-self.Df(u)+w*w*self.a(u,w))
+
+
+
+
+
+
+
 		# setting up the stimulation function
 	def thestim(self,elstim):
 		self.f=lambda x: elstim(x)
